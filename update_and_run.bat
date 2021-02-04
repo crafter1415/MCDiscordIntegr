@@ -45,8 +45,8 @@ if exist mcdi.jar del mcdi.jar
 if exist update.log del update.log
 bitsadmin /cancel mcdi >nul
 bitsadmin /cancel log >nul
-start /min /wait "" bitsadmin /transfer mcdi https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info "%~dp0\mcdi.jar"
-start /min /wait "" bitsadmin /transfer log https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info "%~dp0\update.log"
+start /min /wait "" bitsadmin /transfer mcdi https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar "%~dp0\mcdi.jar"
+start /min /wait "" bitsadmin /transfer log https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log "%~dp0\update.log"
 echo [AutoUpdate] 自動アップデートが完了しました
 echo [AutoUpdate] 更新情報 :
 type .work\version.info
