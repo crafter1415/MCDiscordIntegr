@@ -1,6 +1,6 @@
 @rem ## 必要がある場合はここでjava本体とjvm引数を指定してください
 @set JAVA=java
-@set JAVA_ARGS=-Xms2G -Xmx4G
+@set JVM_ARGS=-Xms2G -Xmx4G
 @rem ## システムエンコードと本ファイルのエンコードが異なる場合文字化けを起こす可能性があります
 @rem ## その際はお手数ですが手動でエンコードを行ってください
 @rem ##
@@ -52,7 +52,7 @@ echo [AutoUpdate] 更新情報 :
 type .work\version.info
 echo.
 :skipupdate
-%JAVA% %JAVA_ARGS% -jar mcdi.jar
+%JAVA% %JVM_ARGS% -jar mcdi.jar
 pause
 endlocal
 exit /b 0
