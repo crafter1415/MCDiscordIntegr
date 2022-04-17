@@ -21,24 +21,26 @@ if [ ! -e .work/version.remote ]; then
   echo "[AutoUpdate] リモートのバージョンの確認に失敗しました"
   echo "[AutoUpdate] 更新をスキップします"
 else
-  if [ -e .work/version.info ]; then
-    diff -s .work/version.remote .work\version.info > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-      rm .work/version.remote
-      echo "[AutoUpdate] 本バージョンは最新バージョンです"
-      echo "[AutoUpdate] バージョン確認を終了します"
-    else
-      mv .work/version.remote version.info
-      rm mcdi.jar
-      rm update.log
-      wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar -O mcdi.jar
-      wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log -O update.log
-      echo "[AutoUpdate] 自動アップデートが完了しました"
-      echo "[AutoUpdate] 更新情報 :"
-      cat .work/version.info
-      echo ""
+  for i in 0
+  do
+    if [ -e .work/version.info ]; then
+      diff -s .work/version.remote .work\version.info > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+        rm .work/version.remote
+        echo "[AutoUpdate] 本バージョンは最新バージョンです"
+        echo "[AutoUpdate] バージョン確認を終了します"
+        break
     fi
-  fi
+    mv .work/version.remote version.info
+    rm mcdi.jar
+    rm update.log
+    wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar -O mcdi.jar
+    wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log -O update.log
+    echo "[AutoUpdate] 自動アップデートが完了しました"
+    echo "[AutoUpdate] 更新情報 :"
+    cat .work/version.info
+    echo ""
+  done
 fi
 $JAVA $JVM_ARGS -jar mcdi.jar
 exit 0
