@@ -1,8 +1,13 @@
 #!/bin/sh
 cd `dirname $0`
+# 
 # 必要がある場合はここでjava本体とjvm引数を指定してください
+# 
 JAVA="java"
 JVM_ARGS="-Xms4G -Xmx4G"
+#
+# [重要] 現在名前に空白を含むディレクトリでの実行をサポートしていません
+# 
 # 仕様上本ファイルの実行にアクセス権が要求される場合があります。
 # その場合は本ソースコードをサーバーディレクトリに配置した後に配置したディレクトリで以下のコマンドを実行してください: 
 #   chmod u+x ./update_and_run.sh
@@ -10,6 +15,7 @@ JVM_ARGS="-Xms4G -Xmx4G"
 # その際はお手数ですが手動でエンコードを行ってください
 #
 # 以下自動アップデート用コード
+# 
 mkdir .work
 rm .work/version.remote
 wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info -O .work/version.remote
@@ -30,6 +36,7 @@ else
         echo "[AutoUpdate] 本バージョンは最新バージョンです"
         echo "[AutoUpdate] バージョン確認を終了します"
         break
+      fi
     fi
     mv .work/version.remote version.info
     rm mcdi.jar
@@ -42,5 +49,5 @@ else
     echo ""
   done
 fi
-$JAVA $JVM_ARGS -jar mcdi.jar
+$JAVA $JVM_ARGS -jar mcdi.jar nogui
 exit 0
