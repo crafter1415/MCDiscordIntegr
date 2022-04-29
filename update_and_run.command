@@ -18,7 +18,7 @@ JVM_ARGS="-Xms4G -Xmx4G"
 # 
 mkdir .work
 rm .work/version.remote
-wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info -O .work/version.remote
+curl https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info -Lo .work/version.remote
 if [ ! -e .work/version.remote ]; then
   if [ ! -e mcdi.jar ]; then
     echo "[AutoUpdate] 初期化に失敗しました"
@@ -41,8 +41,8 @@ else
     mv .work/version.remote version.info
     rm mcdi.jar
     rm update.log
-    wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar -O mcdi.jar
-    wget https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log -O update.log
+    curl https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar -Lo mcdi.jar
+    curl https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log -Lo update.log
     echo "[AutoUpdate] 自動アップデートが完了しました"
     echo "[AutoUpdate] 更新情報 :"
     cat .work/version.info
