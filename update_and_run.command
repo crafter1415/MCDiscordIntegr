@@ -1,5 +1,6 @@
 #!/bin/sh
-cd `dirname $0`
+DIR=$(dirname "$0")
+cd "$DIR"
 # 
 # 必要がある場合はここでjava本体とjvm引数を指定してください
 # 
