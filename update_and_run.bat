@@ -17,8 +17,7 @@ if not exist .work (
     attrib .work +h
 )
 if exist .work\version.remote del .work\version.remote
-bitsadmin /cancel check_remote >nul
-start /min /wait "" bitsadmin /transfer check_remote https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info "%~dp0\.work\version.remote"
+curl -L https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/version.info  -o .\.work\version.remote
 if not exist .work\version.remote (
     if not exist mcdi.jar (
         echo [AutoUpdate] 初期化に失敗しました
@@ -43,10 +42,8 @@ if %errorlevel% equ 1 (
 ren .work\version.remote version.info
 if exist mcdi.jar del mcdi.jar
 if exist update.log del update.log
-bitsadmin /cancel mcdi >nul
-bitsadmin /cancel log >nul
-start /min /wait "" bitsadmin /transfer mcdi https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar "%~dp0\mcdi.jar"
-start /min /wait "" bitsadmin /transfer log https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log "%~dp0\update.log"
+curl -L https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/mcdi.jar -o .\mcdi.jar
+curl -L https://raw.githubusercontent.com/crafter1415/MCDiscordIntegr/main/update.log -o .\update.log
 echo [AutoUpdate] 自動アップデートが完了しました
 echo [AutoUpdate] 更新情報 :
 type .work\version.info
