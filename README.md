@@ -20,3 +20,10 @@ Homebrew のインストール方法に関しては長くなり趣旨から外�
   
 [ここ](https://github.com/crafter1415/MCDiscordIntegr/raw/main/update_and_run.command)からダウンロードしたファイルを `server.jar` のあるディレクトリに配置し、  
 必要があればファイル内の変数 `JAVA` `JVM_ARGS` を変更してサーバー起動の際に実行してください。
+
+## 使用ライブラリ
+
+Discord連携: [JDA](https://github.com/DV8FromTheWorld/JDA)  
+json関連: [Gson](https://github.com/google/gson)  
+自動バックアップ: [Apache Commons Compress](https://github.com/apache/commons-compress), [XZ](https://github.com/tukaani-project/xz)  
+GitHub連携: [JGit](https://www.eclipse.org/jgit/), [JSch(fork)](https://github.com/mwiede/jsch), [BouncyCastle](https://github.com/bcgit/bc-java)
